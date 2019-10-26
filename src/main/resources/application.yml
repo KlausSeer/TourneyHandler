@@ -1,12 +1,17 @@
 spring:
   datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/TourneyDB
+    url: jdbc:postgresql://localhost:5432/TourneyHandlerDB
     username: postgres
-    password: 1234
+    password: admin
+    driver-class-name: org.postgresql.Driver
   jpa:
     database: postgresql
     hibernate:
       ddl-auto: update
     generate-ddl: true
-    show-sql: true 
+    show-sql: true
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
