@@ -31,7 +31,7 @@ public class Match implements Serializable {
 	private Integer id;
 	
 	@Column(name="type_game", length = 50, nullable = false)
-	private int typeGame;
+	private Integer typeGame;
 	
 	@Size(min=3, message="El nombre del juego debe tener un minimo de 3 caracteres")
 	@Column(name="name_game", length = 50, nullable = false)

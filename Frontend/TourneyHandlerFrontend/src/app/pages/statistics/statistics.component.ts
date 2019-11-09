@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { StatisticsService } from 'src/app/_service/statistics.service';
+import { Statistics } from 'src/app/_model/statistics';
+
 
 @Component({
   selector: 'app-statistics',
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StatisticsComponent implements OnInit {
 
-  constructor() { }
+  statisticss: Statistics[];
+
+  constructor(private statisticsService: StatisticsService) { }
 
   ngOnInit() {
+    this.loadData();
   }
 
+  loadData(){
+    this.statisticsService.getStatisticssList()
+    .subscribe(statisticss=>this.statisticss=statisticss)
+  }
+
+  deleteStatistics(statistics:Statistics){
+    this.statisticsService.deleteStatistics(statistics.id)
+    .subscribe(data =>{this.loadData();})
+  }
 }

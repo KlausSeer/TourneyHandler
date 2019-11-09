@@ -1,3 +1,26 @@
-<p>
-  format works!
-</p>
+<br/>
+<h2>Listado de Formats</h2>
+<br/>
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Descripcion</th>
+            <th scope="col">Acción</th>
+        </tr>
+    </thead>
+    <tbody>
+        <ng-container *ngFor="let format of formats">
+            <tr>
+                <th scope="row">{{format.id}}</th>
+                <td>{{format.name}}</td>
+                <td>{{format.description}}</td>
+                <td>
+                    <button class="btn btn-danger" type="submit" 
+                    (click)='deleteFormat(format)'>Eliminar</button>
+                </td>
+            </tr>
+        </ng-container>
+    </tbody>
+</table>

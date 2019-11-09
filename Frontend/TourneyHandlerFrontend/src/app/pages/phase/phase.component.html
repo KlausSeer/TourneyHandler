@@ -1,3 +1,26 @@
-<p>
-  phase works!
-</p>
+<br/>
+<h2>Listado de Phases</h2>
+<br/>
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Descripcion</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Acción</th>
+        </tr>
+    </thead>
+    <tbody>
+        <ng-container *ngFor="let phase of phases">
+            <tr>
+                <th scope="row">{{phase.id}}</th>
+                <td>{{phase.description}}</td>
+                <td>{{phase.stage}}</td>
+                <td>
+                    <button class="btn btn-danger" type="submit" 
+                    (click)='deletePhase(phase)'>Eliminar</button>
+                </td>
+            </tr>
+        </ng-container>
+    </tbody>
+</table>

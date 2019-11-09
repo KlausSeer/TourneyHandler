@@ -42,7 +42,7 @@ public class Tournament implements Serializable {
 	private String state;
 	
 	@Column(name="prestige", length = 50, nullable = false)
-	private int Prestige;
+	private Integer prestige;
 	
 	@OneToMany(mappedBy = "tournamentT", cascade = CascadeType.ALL, 
 			fetch = FetchType.LAZY)

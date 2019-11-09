@@ -1,3 +1,24 @@
-<p>
-  team works!
-</p>
+<br/>
+<h2>Listado de Teams</h2>
+<br/>
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Acción</th>
+        </tr>
+    </thead>
+    <tbody>
+        <ng-container *ngFor="let team of teams">
+            <tr>
+                <th scope="row">{{team.id}}</th>
+                <td>{{team.name}}</td>
+                <td>
+                    <button class="btn btn-danger" type="submit" 
+                    (click)='deleteTeam(team)'>Eliminar</button>
+                </td>
+            </tr>
+        </ng-container>
+    </tbody>
+</table>

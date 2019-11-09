@@ -1,3 +1,26 @@
-<p>
-  match works!
-</p>
+<br/>
+<h2>Listado de Matchs</h2>
+<br/>
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Acción</th>
+        </tr>
+    </thead>
+    <tbody>
+        <ng-container *ngFor="let match of matchs">
+            <tr>
+                <th scope="row">{{match.id}}</th>
+                <td>{{match.typeGame}}</td>
+                <td>{{match.nameGame}}</td>
+                <td>
+                    <button class="btn btn-danger" type="submit" 
+                    (click)='deleteMatch(match)'>Eliminar</button>
+                </td>
+            </tr>
+        </ng-container>
+    </tbody>
+</table>

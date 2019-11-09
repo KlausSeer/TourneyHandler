@@ -46,7 +46,7 @@ public class User implements Serializable {
 	private String password;
 	
 	@Column(name="admin", length = 50, nullable = false)
-	private int admin;
+	private Integer admin;
 	
 	@OneToOne
 	@JoinColumn(name="tutor_id", nullable = true)

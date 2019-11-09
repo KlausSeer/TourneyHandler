@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Tournament } from 'src/app/_model/tournament';
+import { TournamentService } from 'src/app/_service/tournament.service';
+
 
 @Component({
   selector: 'app-tournament',
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TournamentComponent implements OnInit {
 
-  constructor() { }
+  tournaments: Tournament[];
+
+  constructor(private tournamentService: TournamentService) { }
 
   ngOnInit() {
+    this.loadData();
   }
 
+  loadData(){
+    this.tournamentService.getTournamentsList()
+    .subscribe(tournaments=>this.tournaments=tournaments)
+  }
+
+  deleteTournament(tournament:Tournament){
+    this.tournamentService.deleteTournament(tournament.id)
+    .subscribe(data =>{this.loadData();})
+  }
 }

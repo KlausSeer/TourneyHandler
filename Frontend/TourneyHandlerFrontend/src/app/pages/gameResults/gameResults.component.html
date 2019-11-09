@@ -1,3 +1,26 @@
-<p>
-  gameResults works!
-</p>
+<br/>
+<h2>Listado de GameResultss</h2>
+<br/>
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">KDA</th>
+            <th scope="col">Ganador</th>
+            <th scope="col">Acción</th>
+        </tr>
+    </thead>
+    <tbody>
+        <ng-container *ngFor="let gameResults of gameResultss">
+            <tr>
+                <th scope="row">{{gameResults.id}}</th>
+                <td>{{gameResults.KDA}}</td>
+                <td>{{gameResults.winner}}</td>
+                <td>
+                    <button class="btn btn-danger" type="submit" 
+                    (click)='deleteGameResults(gameResults)'>Eliminar</button>
+                </td>
+            </tr>
+        </ng-container>
+    </tbody>
+</table>

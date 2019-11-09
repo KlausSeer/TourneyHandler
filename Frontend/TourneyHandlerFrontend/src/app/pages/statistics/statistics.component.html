@@ -1,3 +1,24 @@
-<p>
-  statistics works!
-</p>
+<br/>
+<h2>Listado de Statisticss</h2>
+<br/>
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">KDA</th>
+            <th scope="col">Acción</th>
+        </tr>
+    </thead>
+    <tbody>
+        <ng-container *ngFor="let statistics of statisticss">
+            <tr>
+                <th scope="row">{{statistics.id}}</th>
+                <td>{{statistics.KDA}}</td>
+                <td>
+                    <button class="btn btn-danger" type="submit" 
+                    (click)='deleteStatistics(statistics)'>Eliminar</button>
+                </td>
+            </tr>
+        </ng-container>
+    </tbody>
+</table>

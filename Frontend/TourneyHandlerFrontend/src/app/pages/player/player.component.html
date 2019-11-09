@@ -1,3 +1,24 @@
-<p>
-  player works!
-</p>
+<br/>
+<h2>Listado de Players</h2>
+<br/>
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Juego de Preferencia</th>
+            <th scope="col">Acción</th>
+        </tr>
+    </thead>
+    <tbody>
+        <ng-container *ngFor="let player of players">
+            <tr>
+                <th scope="row">{{player.id}}</th>
+                <td>{{player.gamePref}}</td>
+                <td>
+                    <button class="btn btn-danger" type="submit" 
+                    (click)='deletePlayer(player)'>Eliminar</button>
+                </td>
+            </tr>
+        </ng-container>
+    </tbody>
+</table>

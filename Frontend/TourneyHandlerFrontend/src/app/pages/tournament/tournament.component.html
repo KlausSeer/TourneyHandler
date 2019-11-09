@@ -1,3 +1,30 @@
-<p>
-  tournament works!
-</p>
+<br/>
+<h2>Listado de Tournaments</h2>
+<br/>
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Game Tag</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Prestigio</th>
+            <th scope="col">Acción</th>
+        </tr>
+    </thead>
+    <tbody>
+        <ng-container *ngFor="let tournament of tournaments">
+            <tr>
+                <th scope="row">{{tournament.id}}</th>
+                <td>{{tournament.name}}</td>
+                <td>{{tournament.gameTag}}</td>
+                <td>{{tournament.state}}</td>
+                <td>{{tournament.prestige}}</td>
+                <td>
+                    <button class="btn btn-danger" type="submit" 
+                    (click)='deleteTournament(tournament)'>Eliminar</button>
+                </td>
+            </tr>
+        </ng-container>
+    </tbody>
+</table>
