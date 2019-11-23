@@ -1,5 +1,7 @@
 package com.tourneyhandler.service.impl;
 
+import com.tourneyhandler.util.TourneyUtil;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,6 +16,8 @@ import com.tourneyhandler.service.IPlayerService;
 @Service
 public class PlayerServiceImpl implements IPlayerService {
 
+	private TourneyUtil TU;
+	
 	@Autowired
 	private IPlayerRepository playerRepository; 
 	
@@ -39,5 +43,18 @@ public class PlayerServiceImpl implements IPlayerService {
 	@Override
 	public List<Player> findAll() throws Exception {
 		return playerRepository.findAll();
+	}
+
+	@Override
+	public List<Player> PlayGame(List<Player> prevMatch) throws Exception {
+		
+		List<Player>ls = new ArrayList<Player>();
+		for(int i = 1; i < prevMatch.size()-1;i +=2)
+		{
+			Player nuevo = TU.PlayMatch(prevMatch.get(i - 1), prevMatch.get(i));
+			ls.add(nuevo);
+		}
+		return ls;
+		
 	}
 }

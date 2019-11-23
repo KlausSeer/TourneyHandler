@@ -7,4 +7,5 @@ import com.tourneyhandler.entities.Match;
 
 @Repository
 public interface IMatchRepository extends JpaRepository<Match, Integer> {
+	
 }

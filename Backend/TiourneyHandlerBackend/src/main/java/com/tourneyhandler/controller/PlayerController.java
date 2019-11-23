@@ -1,5 +1,7 @@
 package com.tourneyhandler.controller;
 
+
+import com.tourneyhandler.util.TourneyUtil;;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +36,8 @@ import io.swagger.annotations.ApiResponses;
 @Api(tags="Player", value="Servicio Web RESTFull de Players")
 public class PlayerController {
 	
+	TourneyUtil TU;
+	
 	@Autowired
 	private IPlayerService playerService;
 	
@@ -47,6 +51,23 @@ public class PlayerController {
 		try {
 			List<Player> players = new ArrayList<>();
 			players = playerService.findAll();
+			return new ResponseEntity<List<Player>>(players, HttpStatus.OK);
+		}catch(Exception e){
+			return new ResponseEntity<List<Player>>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	@GetMapping(produces=MediaType.APPLICATION_JSON_VALUE)
+	@ApiOperation(value="Listar Players", notes="Servicio para listar todos los players")
+	@ApiResponses(value= {
+			@ApiResponse(code=201, message="Players encontrados"),
+			@ApiResponse(code=404, message="Players no encontrados")
+	})	
+	public ResponseEntity<List<Player>> findAllSorted(){
+		try {
+			List<Player> players = new ArrayList<>();
+			players = playerService.findAll();
+			TU.Sort(players);
 			return new ResponseEntity<List<Player>>(players, HttpStatus.OK);
 		}catch(Exception e){
 			return new ResponseEntity<List<Player>>(HttpStatus.INTERNAL_SERVER_ERROR);

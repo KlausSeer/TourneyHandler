@@ -53,6 +53,23 @@ public class MatchController {
 		}
 	}
 	
+	@GetMapping(produces=MediaType.APPLICATION_JSON_VALUE)
+	@ApiOperation(value="Listar Matchs", notes="Servicio para listar todos los matchs")
+	@ApiResponses(value= {
+			@ApiResponse(code=201, message="Matchs encontrados"),
+			@ApiResponse(code=404, message="Matchs no encontrados")
+	})	
+	public ResponseEntity<List<Match>> findAllSorted(){
+		try {
+			List<Match> matchs = new ArrayList<>();
+			matchs = matchService.findAll();
+			//Sort
+			return new ResponseEntity<List<Match>>(matchs, HttpStatus.OK);
+		}catch(Exception e){
+			return new ResponseEntity<List<Match>>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
 	@GetMapping(value="/{id}", produces=MediaType.APPLICATION_JSON_VALUE)
 	@ApiOperation(value="Buscar Match por Id", notes="Servicio para buscar un match por Id")
 	@ApiResponses(value= {
